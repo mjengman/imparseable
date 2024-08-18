@@ -8,12 +8,18 @@
 </head>
 <body>
     <div class="container">
-        <h1>Imparseable</h1>
-        <textarea id="textInput" placeholder="Paste your text here..." rows="10"></textarea>
-        <button id="analyzeButton">Analyze</button>
-        <div id="results">
-            <h2>Analysis Results:</h2>
-            <p id="wordCountResult">Word Count: <span id="wordCount">0</span></p>
+        <div class="left-section">
+            <h1>Imparseable</h1>
+            <textarea id="textInput" placeholder="Paste your text here..." rows="10"></textarea>
+            <button id="analyzeButton">Analyze</button>
+            <div id="results">
+                <h2>Analysis Results:</h2>
+                <p id="wordCountResult">Word Count: <span id="wordCount">0</span></p>
+            </div>
+        </div>
+        <div class="right-section" id="wordCloudContainer">
+            <h2>Word Cloud:</h2>
+            <canvas id="wordCloud" width="600" height="400"></canvas>
         </div>
     </div>
     <script src="scripts.js"></script>
