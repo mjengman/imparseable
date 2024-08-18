@@ -3,25 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Imparseable</title>
+    <title>Imparseable - Text Analysis Tool</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <div class="container">
-        <div class="left-section">
-            <h1>Imparseable</h1>
-            <textarea id="textInput" placeholder="Paste your text here..." rows="10"></textarea>
-            <button id="analyzeButton">Analyze</button>
-            <div id="results">
-                <h2>Analysis Results:</h2>
-                <p id="wordCountResult">Word Count: <span id="wordCount">0</span></p>
+        <h1>Imparseable - Text Analysis Tool</h1>
+        <textarea id="text-input" placeholder="Paste your text here..."></textarea>
+        <button id="analyze-button">Analyze</button>
+        <div id="results">
+            <p><strong>Word Count:</strong> <span id="word-count">0</span></p>
+            <p><strong>Unique Word Count:</strong> <span id="unique-word-count">0</span></p>
+            <div id="top-words">
+                <p><strong>Top 10 Most Used Words:</strong></p>
+                <!-- Top 10 words will be displayed here -->
             </div>
         </div>
-        <div class="right-section" id="wordCloudContainer">
-            <h2>Word Cloud:</h2>
-            <canvas id="wordCloud" width="600" height="400"></canvas>
-        </div>
     </div>
-    <script src="scripts.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
