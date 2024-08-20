@@ -87,6 +87,41 @@ document.getElementById('analyze-btn').addEventListener('click', function() {
         .map(([fourGram, count]) => `${fourGram}: ${count}`)
         .join(', ');
 
+    // Sentiment Analysis
+    const positiveWords = ['happy', 'joy', 'love', 'excellent', 'good', 'great', 'positive', 'fortunate', 'correct', 'superior'];
+    const negativeWords = ['sad', 'hate', 'terrible', 'bad', 'poor', 'negative', 'unfortunate', 'wrong', 'inferior'];
+
+    let sentimentScore = 0;
+    let positiveCount = 0;
+    let negativeCount = 0;
+    let emotionCounts = {
+        joy: 0,
+        anger: 0,
+        sadness: 0,
+        fear: 0
+    };
+
+    words.forEach(word => {
+        const lowerWord = word.toLowerCase();
+        if (positiveWords.includes(lowerWord)) {
+            sentimentScore++;
+            positiveCount++;
+            if (['happy', 'joy', 'love', 'fortunate', 'excellent'].includes(lowerWord)) {
+                emotionCounts.joy++;
+            }
+        }
+        if (negativeWords.includes(lowerWord)) {
+            sentimentScore--;
+            negativeCount++;
+            if (['sad', 'hate', 'terrible', 'unfortunate'].includes(lowerWord)) {
+                emotionCounts.sadness++;
+            }
+        }
+    });
+
+    const sentimentPolarity = sentimentScore > 0 ? 'Positive' : (sentimentScore < 0 ? 'Negative' : 'Neutral');
+    const sentimentIntensity = sentimentScore > 5 || sentimentScore < -5 ? 'Strong' : 'Moderate';
+
     // Display Basic Metrics
     document.getElementById('basic-metrics').innerHTML = `
         <span>Word Count: ${wordCount}</span>
@@ -106,7 +141,15 @@ document.getElementById('analyze-btn').addEventListener('click', function() {
         <span>Top 4-grams: ${topFourGrams}</span>
     `;
 
-    // Additional logic for other features can be implemented here
+    // Display Sentiment Analysis
+    document.getElementById('sentiment-analysis').innerHTML = `
+        <span>Sentiment Polarity: ${sentimentPolarity}</span>
+        <span>Sentiment Intensity: ${sentimentIntensity}</span>
+        <span>Positive Words: ${positiveCount}</span>
+        <span>Negative Words: ${negativeCount}</span>
+        <span>Joy Words: ${emotionCounts.joy}</span>
+        <span>Sadness Words: ${emotionCounts.sadness}</span>
+    `;
 
     // Clear input field after analysis
     // document.getElementById('text-input').value = '';
