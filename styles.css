@@ -95,3 +95,36 @@ footer {
     padding: 1rem;
     text-align: center;
 }
+
+.tooltip {
+    position: relative;
+    cursor: pointer;
+    border-bottom: 1px dashed #666; /* Optional: Adds a dashed underline to indicate it's interactive */
+}
+
+.tooltip:hover::after {
+    content: attr(data-tooltip);
+    white-space: pre-wrap; /* Allows line breaks */
+    position: absolute;
+    bottom: 125%; /* Positions the tooltip above the element */
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #333;
+    color: #fff;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 12px;
+    z-index: 1;
+    opacity: 1;
+    visibility: visible;
+    transition: opacity 0.2s;
+    pointer-events: none; /* Prevents the tooltip from blocking the hover event */
+    min-width: 200px;
+}
+
+.tooltip::after {
+    content: "";
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.2s;
+}

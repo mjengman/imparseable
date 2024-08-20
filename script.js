@@ -153,13 +153,16 @@ document.getElementById('analyze-btn').addEventListener('click', function() {
 
     // Display Lexical & Syntactic Features
     document.getElementById('lexical-syntactic-features').innerHTML = `
-        <span>Lexical Diversity: ${lexicalDiversity}</span>
+        <span class="tooltip" data-tooltip="Lexical diversity measures the variety of vocabulary used in the text. A higher value indicates more unique words, suggesting richer language.">
+            Lexical Diversity: ${lexicalDiversity}
+        </span>
         <span>Stop Word Count: ${stopWordCount}</span>
         <span>Top Keywords: ${topKeywords}</span>
         <span>Top Bigrams: ${topBigrams}</span>
         <span>Top Trigrams: ${topTrigrams}</span>
         <span>Top 4-grams: ${topFourGrams}</span>
     `;
+
 
     // Display Sentiment and Emotion Analysis
     document.getElementById('sentiment-analysis').innerHTML = `
