@@ -3,23 +3,52 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Imparseable - Text Analysis Tool</title>
+    <title>Language Parsing Tool</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="container">
-        <h1>Imparseable - Text Analysis Tool</h1>
-        <textarea id="text-input" placeholder="Paste your text here..."></textarea>
-        <button id="analyze-button">Analyze</button>
-        <div id="results">
-            <p><strong>Word Count:</strong> <span id="word-count">0</span></p>
-            <p><strong>Unique Word Count:</strong> <span id="unique-word-count">0</span></p>
-            <div id="top-words">
-                <p><strong>Top 10 Most Used Words:</strong></p>
-                <!-- Top 10 words will be displayed here -->
+    <header>
+        <h1>Language Parsing Tool</h1>
+    </header>
+
+    <main>
+        <section class="input-section">
+            <textarea id="text-input" placeholder="Paste your text here..."></textarea>
+            <button id="analyze-btn">Analyze Text</button>
+        </section>
+
+        <section class="results-section">
+            <div class="result-category">
+                <h2>Basic Metrics</h2>
+                <div id="basic-metrics"></div>
             </div>
-        </div>
-    </div>
+
+            <div class="result-category">
+                <h2>Lexical & Syntactic Features</h2>
+                <div id="lexical-syntactic-features"></div>
+            </div>
+
+            <div class="result-category">
+                <h2>Sentiment Analysis</h2>
+                <div id="sentiment-analysis"></div>
+            </div>
+
+            <div class="result-category">
+                <h2>Text Structure</h2>
+                <div id="text-structure"></div>
+            </div>
+
+            <div class="result-category">
+                <h2>Additional Metrics</h2>
+                <div id="additional-metrics"></div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>© 2024 Language Parsing Tool by Michael Engman</p>
+    </footer>
+
     <script src="script.js"></script>
 </body>
 </html>
