@@ -15,6 +15,7 @@
         <section class="input-section">
             <textarea id="text-input" placeholder="Paste your text here..."></textarea>
             <button id="analyze-btn">Analyze Text</button>
+            <button id="ai-analyze-btn">Analyze with AI</button> <!-- New button -->
         </section>
 
         <section class="results-section">
@@ -42,6 +43,11 @@
                 <h2>Additional Metrics</h2>
                 <div id="additional-metrics"></div>
             </div>
+
+            <div class="result-category"> <!-- New AI Output Section -->
+                <h2>AI Analysis Output</h2>
+                <div id="ai-analysis-output"></div>
+            </div>
         </section>
     </main>
 
@@ -49,6 +55,7 @@
         <p>© 2024 Language Parsing Tool by Michael Engman</p>
     </footer>
 
+    <script src="./config.js"></script>
     <script src="./wordBank.js"></script>
     <script src="./script.js"></script>
 </body>

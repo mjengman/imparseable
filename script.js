@@ -184,3 +184,45 @@ document.getElementById('analyze-btn').addEventListener('click', function() {
     // Clear input field after analysis
     // document.getElementById('text-input').value = '';
 });
+
+// New function for AI analysis
+document.getElementById('ai-analyze-btn').addEventListener('click', async function() {
+    const textInput = document.getElementById('text-input').value;
+    const prompt = `Analyze the sentiment and emotion in the following text:\n\n${textInput}`;
+
+    const aiAnalysis = await callChatGPTAPI(prompt);
+    
+    // Display the AI analysis result
+    document.getElementById('ai-analysis-output').innerHTML = `
+        <p>${aiAnalysis}</p>
+    `;
+});
+
+async function callChatGPTAPI(prompt) {
+    try {
+        const response = await fetch("https://api.openai.com/v1/chat/completions", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": `Bearer ${API_KEY}`
+            },
+            body: JSON.stringify({
+                model: "gpt-4", // You can change this to the model you're using
+                messages: [{ role: "user", content: prompt }],
+                max_tokens: 150, // Adjust based on how long you want the response to be
+                temperature: 0.7 // Controls creativity; lower is more focused, higher is more creative
+            })
+        });
+
+        const data = await response.json();
+        if (response.ok) {
+            return data.choices[0].message.content;
+        } else {
+            console.error('Error:', data);
+            return "An error occurred while processing your request.";
+        }
+    } catch (error) {
+        console.error('Fetch error:', error);
+        return "A network error occurred.";
+    }
+}
