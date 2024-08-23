@@ -135,3 +135,46 @@ footer {
     border-radius: 5px;
     border: 1px solid #ccc;
 }
+
+.button-group {
+    display: flex;
+    gap: 1rem; /* Add space between the buttons */
+}
+
+#ai-analyze-btn {
+    padding: 0.75rem 2rem;
+    font-size: 1.1rem;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+#ai-analyze-btn:hover {
+    background-color: #0056b3;
+}
+
+.result-category .content {
+    display: block; /* By default, content is shown */
+    transition: all 0.3s ease-in-out;
+}
+
+.result-category.collapsed .content {
+    display: none; /* Hide content when collapsed */
+}
+
+.toggle-btn {
+    background: none;
+    border: none;
+    font-size: 1.2rem;
+    cursor: pointer;
+    float: left;
+    color: #007bff;
+    margin-right: 10px;
+}
+
+.toggle-btn:focus {
+    outline: none;
+}

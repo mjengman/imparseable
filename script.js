@@ -226,3 +226,17 @@ async function callChatGPTAPI(prompt) {
         return "A network error occurred.";
     }
 }
+
+document.querySelectorAll('.toggle-btn').forEach(button => {
+    button.addEventListener('click', function() {
+        const category = this.closest('.result-category');
+        category.classList.toggle('collapsed');
+
+        // Toggle the button text between [+] and [-]
+        if (category.classList.contains('collapsed')) {
+            this.textContent = '[+]';
+        } else {
+            this.textContent = '[-]';
+        }
+    });
+});
