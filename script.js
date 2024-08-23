@@ -179,10 +179,6 @@ document.getElementById('analyze-btn').addEventListener('click', function() {
         <span>Anger Words: ${emotionCounts.anger}</span>
         <span>Anticipation Words: ${emotionCounts.anticipation}</span>
     `;
-
-
-    // Clear input field after analysis
-    // document.getElementById('text-input').value = '';
 });
 
 // New function for AI analysis
@@ -230,13 +226,15 @@ async function callChatGPTAPI(prompt) {
 document.querySelectorAll('.toggle-btn').forEach(button => {
     button.addEventListener('click', function() {
         const category = this.closest('.result-category');
-        category.classList.toggle('collapsed');
-
-        // Toggle the button text between [+] and [-]
-        if (category.classList.contains('collapsed')) {
-            this.textContent = '[+]';
+        const content = category.querySelector('.content');
+        
+        // Toggle the visibility of the content
+        if (content.style.display === 'none' || content.style.display === '') {
+            content.style.display = 'block'; // Show content
+            this.textContent = '[-]'; // Change button text to indicate collapse
         } else {
-            this.textContent = '[-]';
+            content.style.display = 'none'; // Hide content
+            this.textContent = '[+]'; // Change button text to indicate expand
         }
     });
 });

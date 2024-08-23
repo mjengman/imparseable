@@ -64,11 +64,15 @@ main {
     gap: 1.5rem;
 }
 
-.result-category {
-    background-color: #fff;
-    padding: 1.5rem;
+.result-category div span {
+    background-color: #e9ecef;
+    padding: 0.5rem 1rem;
     border-radius: 5px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin: 0.2rem 0; /* Add a small margin to separate each span vertically */
+    display: inline-block; /* Ensures that each span is treated as an inline-block element */
+    max-width: calc(100% - 2rem); /* Prevents the span from exceeding the container width */
+    word-wrap: break-word; /* Ensures text within the span wraps if it's too long */
+    box-sizing: border-box;
 }
 
 .result-category h2 {
