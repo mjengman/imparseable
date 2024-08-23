@@ -181,18 +181,33 @@ document.getElementById('analyze-btn').addEventListener('click', function() {
     `;
 });
 
-// New function for AI analysis
 document.getElementById('ai-analyze-btn').addEventListener('click', async function() {
+    toggleAISection();
+    
     const textInput = document.getElementById('text-input').value;
     const prompt = `Analyze the sentiment and emotion in the following text:\n\n${textInput}`;
 
-    const aiAnalysis = await callChatGPTAPI(prompt);
-    
-    // Display the AI analysis result
-    document.getElementById('ai-analysis-output').innerHTML = `
-        <p>${aiAnalysis}</p>
-    `;
+    // Show the spinner
+    document.getElementById('loading-indicator').style.display = 'block';
+
+    try {
+        const aiAnalysis = await callChatGPTAPI(prompt);
+        
+        // Display the AI analysis result
+        document.getElementById('ai-analysis-output').innerHTML = `
+            <p>${aiAnalysis}</p>
+        `;
+    } catch (error) {
+        // Handle error (optional)
+        document.getElementById('ai-analysis-output').innerHTML = `
+            <p>Error processing your request. Please try again later.</p>
+        `;
+    } finally {
+        // Hide the spinner after processing is complete
+        document.getElementById('loading-indicator').style.display = 'none';
+    }
 });
+
 
 async function callChatGPTAPI(prompt) {
     try {
@@ -238,3 +253,16 @@ document.querySelectorAll('.toggle-btn').forEach(button => {
         }
     });
 });
+
+function toggleAISection() {
+    const aiSection = document.querySelector('.result-category-ai');
+
+    if (aiSection) {
+        if (aiSection.style.display === 'none' || aiSection.style.display === '') {
+            aiSection.style.display = 'block'; // Show the AI section
+        } else {
+            aiSection.style.display = 'none'; // Hide the AI section
+        }
+    }
+}
+
