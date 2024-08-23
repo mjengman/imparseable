@@ -208,7 +208,6 @@ document.getElementById('ai-analyze-btn').addEventListener('click', async functi
     }
 });
 
-
 async function callChatGPTAPI(prompt) {
     try {
         const response = await fetch("https://api.openai.com/v1/chat/completions", {
@@ -266,3 +265,28 @@ function toggleAISection() {
     }
 }
 
+const maxTokens = 6000;
+
+function updateButtonState() {
+    const textInput = document.getElementById('text-input').value.trim();
+    const tokenCount = textInput.split(/\s+/).length; // Estimate token count by word count
+    
+    const aiAnalyzeBtn = document.getElementById('ai-analyze-btn');
+    
+    if (textInput.length === 0) {
+        aiAnalyzeBtn.disabled = true;  // Disable the button
+        aiAnalyzeBtn.style.backgroundColor = '#ccc'; // Change appearance when disabled
+        aiAnalyzeBtn.title = 'Input cannot be empty'; // Update title attribute
+    } else if (tokenCount > maxTokens) {
+        aiAnalyzeBtn.disabled = true;  // Disable the button
+        aiAnalyzeBtn.style.backgroundColor = '#ccc'; // Change appearance when disabled
+        aiAnalyzeBtn.title = 'Input is too long to be processed'; // Update title attribute
+    } else {
+        aiAnalyzeBtn.disabled = false; // Enable the button
+        aiAnalyzeBtn.style.backgroundColor = '#007bff'; // Restore original color
+        aiAnalyzeBtn.title = ''; // Clear title
+    }
+}
+
+document.getElementById('text-input').addEventListener('input', updateButtonState);
+updateButtonState();
