@@ -32,6 +32,14 @@ main {
     margin-bottom: 2rem;
 }
 
+.results-container {
+    max-width: 80%; 
+    padding: 10px;  
+    margin: 0 auto;
+    background-color: #cacaca;
+}
+
+
 #text-input {
     width: 100%;
     max-width: 800px;
